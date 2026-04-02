@@ -1,0 +1,164 @@
+\section{Don't Care Conditions}
+
+\begin{definition}
+A don't care condition occurs when the output of a logic circuit for a
+specific input combination is irrelevant. These inputs are represented by \textit{d}
+in Karnaugh-maps. Other representations that can be used are X, $\phi$
+or $-$, these are commonly used in truth tables.
+\end{definition}
+
+\subsubsection{Why They Arise}
+
+Don't care conditions typically arise in two situations:
+
+\begin{description}
+    \item[Invalid input combinations.] In a BCD (Binary Coded Decimal)
+    system, only the input combinations \(0000\) to \(1001\) (representing
+    digits 0--9) are valid. The remaining six combinations (\(1010\) to
+    \(1111\)) can never occur, so their outputs are assigned as don't cares.
+
+    \item[Unused outputs.] In some systems a particular input state is
+    reachable, but the resulting output is never used by any other part of
+    the circuit, making it irrelevant to the designer.
+\end{description}
+
+\subsubsection{How They Are Used}
+
+During minimisation, don't care entries may be treated as either 0 or 1 —
+whichever choice produces the simplest expression. This gives the designer
+freedom to form \textbf{larger groupings (implicants)}, which directly
+reduces the number of logic gates in the final circuit. A key rule applies:
+a grouping may \emph{include} don't cares to enlarge it, but it cannot
+consist \emph{entirely} of don't cares, as such a group covers no required
+output.
+
+\subsubsection{Truth Table Example}
+
+Consider the function \(f(A,B,C) = \sum m(1,3,7) + \sum d(2,5)\), shown
+in Table~\ref{tab:dontcare}. Minterms 2 and 5 are don't cares and can be
+included in groupings during minimisation to yield a simpler final
+expression.
+
+\begin{table}[h!]
+\centering
+\caption{Truth table with don't care conditions}
+\label{tab:dontcare}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+\textbf{Minterm} & \textbf{A} & \textbf{B} & \textbf{C} &
+\textbf{Output} \\
+\midrule
+0 & 0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 1 & 1 \\
+2 & 0 & 1 & 0 & \(d\) \\
+3 & 0 & 1 & 1 & 1 \\
+4 & 1 & 0 & 0 & 0 \\
+5 & 1 & 0 & 1 & \(d\) \\
+6 & 1 & 1 & 0 & 0 \\
+7 & 1 & 1 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Quine-McCluskey Method}
+
+\begin{definition}
+The Quine-McCluskey method is a tabular, algorithmic approach to Boolean
+function minimisation. It is essentially a more systematic and
+computer-friendly version of the Karnaugh map method. This method is a
+deterministic algorithm that can be programmed and is effective for any
+number of variables.
+\end{definition}
+
+\subsubsection{How It Works}
+
+The Quine-McCluskey method proceeds in two well-defined stages.
+
+\begin{description}
+    \item[Step 1: Finding prime implicants.]
+    This step identifies the largest possible groups of 1s and don't cares
+    that can be combined. It works by first listing all minterms (and don't
+    cares) in binary and sorting them into groups according to the number of
+    1-bits in their binary representation. Terms from adjacent groups are
+    then compared and merged if they differ in \textbf{exactly one bit
+    position}, using the algebraic identity:
+    \[
+        AB + AB' = A
+    \]
+    The differing bit is replaced with a dash ($-$) to indicate elimination.
+    This process repeats on the resulting terms until no further merging is
+    possible. Any term that cannot be merged further is a
+    \textbf{prime implicant}.
+
+    \item[Step 2: Finding the essential prime implicants.]
+    This step selects the minimal set of prime implicants needed to cover
+    all the original minterms (the 1s of the function). A
+    \textbf{prime implicant chart} is constructed with prime implicants as
+    rows and original minterms as columns. A prime implicant is
+    \textbf{essential} if it is the only one covering a particular minterm
+    — it must be included in the final expression. After selecting all
+    essential prime implicants, any uncovered minterms are resolved by
+    choosing additional prime implicants, preferring those that cover the
+    most remaining minterms. This is a classic set-covering problem.
+\end{description}
+
+\subsubsection{Worked Example}
+
+Given: \(f(A,B,C,D) = \sum m(0,1,2,5,6,7,8,9,10,14)\)
+
+All minterms are listed in binary and sorted by their number of 1-bits,
+as shown in Table~\ref{tab:grouping}. Adjacent groups are then compared and
+combined where possible, producing the first-round combinations in
+Table~\ref{tab:combinations}.
+
+\begin{table}[h!]
+\centering
+\caption{Minterms grouped by number of 1-bits}
+\label{tab:grouping}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+\textbf{\# of 1s} & \textbf{Minterm} & \textbf{A\;B\;C\;D} \\
+\midrule
+0 & 0  & 0\;0\;0\;0 \\
+\midrule
+1 & 1  & 0\;0\;0\;1 \\
+  & 2  & 0\;0\;1\;0 \\
+  & 8  & 1\;0\;0\;0 \\
+\midrule
+2 & 5  & 0\;1\;0\;1 \\
+  & 6  & 0\;1\;1\;0 \\
+  & 9  & 1\;0\;0\;1 \\
+  & 10 & 1\;0\;1\;0 \\
+\midrule
+3 & 7  & 0\;1\;1\;1 \\
+  & 14 & 1\;1\;1\;0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{First-round combinations}
+\label{tab:combinations}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Minterms} & \textbf{Result} & \textbf{A\;B\;C\;D} \\
+\midrule
+0,\;1   & (0,1)  & 0\;0\;0\;-- \\
+0,\;2   & (0,2)  & 0\;0\;--\;0 \\
+0,\;8   & (0,8)  & --\;0\;0\;0 \\
+1,\;9   & (1,9)  & --\;0\;0\;1 \\
+2,\;6   & (2,6)  & 0\;--\;1\;0 \\
+2,\;10  & (2,10) & --\;0\;1\;0 \\
+8,\;9   & (8,9)  & 1\;0\;0\;-- \\
+8,\;10  & (8,10) & 1\;0\;--\;0 \\
+6,\;7   & (6,7)  & 0\;1\;1\;-- \\
+6,\;14  & (6,14) & --\;1\;1\;0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Combining continues on these results until no further merging is possible.
+Terms that remain uncombined are the prime implicants. These are entered
+into the prime implicant chart, essential prime implicants are identified,
+and the minimised Sum of Products expression is written.
