@@ -1,0 +1,154 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor} 
+\usepackage{enumitem}
+\usepackage{sectsty}
+\usepackage{setspace}
+\usepackage{booktabs}
+\onehalfspacing
+
+\sectionfont{\large\bfseries}
+\subsectionfont{\normalsize\bfseries}
+\subsubsectionfont{\normalsize\itshape}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue, 
+    filecolor=magenta,
+    urlcolor=teal, 
+    pdftitle={A Report on Boolean Algebra},
+    pdfpagemode=FullScreen,
+    }
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+
+    \includegraphics[width=0.7\textwidth]{UniversityLogo.jpg} 
+
+    \vspace{2cm}
+    
+    {\Huge \textbf{A Report on Boolean Algebra}}
+
+    \vspace{1.5cm}
+    
+    \begin{large}
+        \textbf \\ Goitseone Themba 21000539 
+        \textbf \\ Thabiso Kolojane 24019741 
+        \textbf \\ Monkgogi Osupile 24019207 
+        \textbf \\ Allen Meti 24019726 
+        \textbf \\ Calvin Moyo  
+        \textbf \\ Guide Gasebatho 
+        \textbf \\ Oaboloka Bodigelo 
+        \textbf \\ Praise Hombarume \\
+        
+    \vspace{2cm}
+    
+        \textbf{Programme:} BSc Computer Science and Software Engineering \\
+        \textbf{Department:} Department of Computer Science and Information Systems
+    \end{large}
+
+    \vfill
+
+
+    \vspace{1cm}
+
+    \textbf{March 2026}
+
+\end{titlepage}
+
+\begin{abstract}
+\noindent 
+This report presents the fundamentals of Boolean algebra and its application in digital logic design. It focuses on the simplification of Boolean expressions to design efficient circuits with reduced complexity. Karnaugh maps (K-maps) are introduced as a practical method for minimizing Boolean functions by visually grouping terms. The report outlines the basic steps involved in using K-maps and demonstrates how they can be applied to obtain simplified expressions. Overall, the aim is to show how Boolean algebra and K-maps contribute to the design of cost-effective and efficient digital systems.
+\end{abstract}
+
+\newpage
+\section*{Acknowledgements}
+\noindent
+Special thanks, credits where necessary...
+
+\newpage
+\tableofcontents
+
+\newpage
+\include{sections/intro}
+\newpage
+\section{Literature Review}
+
+\subsection{Introduction}
+\noindent
+intro...
+
+\newpage
+\section{Karnaugh Maps (K-Maps)}
+
+Karnaugh maps are used to minimize Boolean expressions, which helps in designing simpler digital circuits. Minimizing circuits is important because it reduces the number of logic gates required, leading to lower cost, less power consumption, and faster operation due to reduced delay. This makes the overall system more efficient and reliable.
+
+\subsection{Steps to Use K-Maps}
+
+\textbf{Step 1: Choose the K-map} \\
+Select the correct K-map based on the number of variables (e.g., 2, 3, or 4 variables).
+
+\textbf{Step 2: Identify minterms or maxterms} \\
+Determine which combinations of inputs produce a 1 (minterms) or 0 (maxterms) from the given function.
+
+\textbf{Step 3: Fill in the K-map} \\
+For SOP, place 1s in the cells corresponding to the minterms and 0s elsewhere.
+
+\textbf{Step 4: Form groups} \\
+Group adjacent cells containing 1s. Each group must have a size that is a power of 2 (e.g., 2, 4, 8).
+
+\textbf{Step 5: Follow grouping rules} \\
+Groups must be as large as possible, no diagonal grouping is allowed, overlapping is allowed, and wrapping around edges is permitted.
+
+\textbf{Step 6: Derive simplified terms} \\
+For each group, identify the variables that remain constant and eliminate those that change.
+
+\textbf{Step 7: Write the final expression} \\
+Combine all simplified terms to form the minimized Boolean expression.
+
+\subsection{Example}
+
+Given $F(A, B) = \Sigma m(0,1)$, place 1s in the cells for $m_0$ and $m_1$. These two cells are adjacent, so they form a group of 2.
+
+$B$ changes, so it is eliminated, and $A$ remains constant at 0.
+
+Final simplified expression:
+\[
+F = \overline{A}
+\]
+
+
+
+\newpage
+\section{Section}
+
+
+\newpage
+\section{Section}
+
+
+\newpage
+\section{Section}
+
+\newpage
+\section*{References}
+
+\begin{enumerate}
+\item STEM Success Center, \textit{Guide to the K-Map (Karnaugh Map)}, CS 231 Handout.
+\end{enumerate}
+
+\newpage
+\section{Appendix A: Some Image or document }
+
+\newpage
+\section*{Appendix C: Detailed....}
+
+\end{document}
