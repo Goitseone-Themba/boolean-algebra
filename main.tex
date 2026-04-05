@@ -2,6 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{ragged2e}
+\usepackage{booktabs}
+\usepackage{array}
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
@@ -42,14 +46,20 @@
     \vspace{1.5cm}
     
     \begin{large}
-        \textbf \\ Goitseone Themba 21000539 
-        \textbf \\ Thabiso Kolojane 24019741 
-        \textbf \\ Monkgogi Osupile 24019207 
-        \textbf \\ Allen Meti 24019726 
-        \textbf \\ Calvin Moyo  
-        \textbf \\ Guide Gasebatho 
-        \textbf \\ Oaboloka Bodigelo  24019715
-        \textbf \\ Praise Hombarume \\
+    \begin{flushleft}
+\begin{large}
+\begin{tabular}{ll}
+    \textbf{Goitseone Themba}  & \textbf{21000539} \\
+    \textbf{Thabiso Kolojane}  & \textbf{24019741} \\
+    \textbf{Monkgogi Osupile}  & \textbf{24019207} \\
+    \textbf{Allen Meti}        & \textbf{24019726} \\
+    \textbf{Calvin Moyo}       & \textbf{19001309} \\
+    \textbf{Guide Gasebatho}   & \textbf{24019715} \\
+    \textbf{Oaboloka Bodigelo} & \textbf{24019715} \\
+    \textbf{Praise Hombarume}  & \textbf{23018855} \\
+\end{tabular}
+\end{large}
+\end{flushleft}
         
     \vspace{2cm}
     
@@ -81,70 +91,34 @@ Special thanks, credits where necessary...
 
 \newpage
 \include{sections/intro}
-\newpage
-\section{Literature Review}
-
-\subsection{Introduction}
-\noindent
-intro...
 
 \newpage
-\section{Karnaugh Maps (K-Maps)}
-
-Karnaugh maps are used to minimize Boolean expressions, which helps in designing simpler digital circuits. Minimizing circuits is important because it reduces the number of logic gates required, leading to lower cost, less power consumption, and faster operation due to reduced delay. This makes the overall system more efficient and reliable.
-
-\subsection{Steps to Use K-Maps}
-
-\textbf{Step 1: Choose the K-map} \\
-Select the correct K-map based on the number of variables (e.g., 2, 3, or 4 variables).
-
-\textbf{Step 2: Identify minterms or maxterms} \\
-Determine which combinations of inputs produce a 1 (minterms) or 0 (maxterms) from the given function.
-
-\textbf{Step 3: Fill in the K-map} \\
-For SOP, place 1s in the cells corresponding to the minterms and 0s elsewhere.
-
-\textbf{Step 4: Form groups} \\
-Group adjacent cells containing 1s. Each group must have a size that is a power of 2 (e.g., 2, 4, 8).
-
-\textbf{Step 5: Follow grouping rules} \\
-Groups must be as large as possible, no diagonal grouping is allowed, overlapping is allowed, and wrapping around edges is permitted.
-
-\textbf{Step 6: Derive simplified terms} \\
-For each group, identify the variables that remain constant and eliminate those that change.
-
-\textbf{Step 7: Write the final expression} \\
-Combine all simplified terms to form the minimized Boolean expression.
-
-\subsection{Example}
-
-Given $F(A, B) = \Sigma m(0,1)$, place 1s in the cells for $m_0$ and $m_1$. These two cells are adjacent, so they form a group of 2.
-
-$B$ changes, so it is eliminated, and $A$ remains constant at 0.
-
-Final simplified expression:
-\[
-F = \overline{A}
-\]
-
-
+\include{sections/abstract-definition-of-boolean-algebra}
 
 \newpage
-\section{Section}
-
-
-\newpage
-\section{Section}
-
+\include{sections/duality-principle}
 
 \newpage
-\include{sections/dont-care-conditions}
+\include{sections/representing-boolean-functions}
+
+\newpage
+\include{sections/logic-gate}
+
+\newpage
+\include{sections/circuit-minimization}
+
+\newpage
+\include{sections/Dont-care-conditions}
+
+\include{sections/Quine-McCluckey-Method}
 
 \newpage
 \section{References}
 
 \begin{enumerate}
 \item STEM Success Center, \textit{Guide to the K-Map (Karnaugh Map)}, CS 231 Handout.
+\item Floyd, T. L. (2015). Digital fundamentals (11th ed.). Pearson.
+\item Rosen, K. H., and Krithivasan, K. (2013). Discrete mathematics and its applications (7th ed., Global ed.). McGraw-Hill.
 \end{enumerate}
 
 \newpage

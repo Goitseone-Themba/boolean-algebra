@@ -1,0 +1,60 @@
+\section{Don't Care Conditions}
+
+\subsection{Definition}
+A don't care condition occurs when the output of a logic circuit for a
+specific input combination is irrelevant. These inputs are represented by \textit{d}
+in Karnaugh-maps. Other representations that can be used are X, $\phi$
+or $-$, these are commonly used in truth tables.
+
+\subsection{Why They Arise}
+
+Don't care conditions typically arise in two situations:
+
+\begin{description}
+    \item[Invalid input combinations.] In a BCD (Binary Coded Decimal)
+    system, only the input combinations \(0000\) to \(1001\) (representing
+    digits 0--9) are valid. The remaining six combinations (\(1010\) to
+    \(1111\)) can never occur, so their outputs are assigned as don't cares.
+
+    \item[Unused outputs.] In some systems a particular input state is
+    reachable, but the resulting output is never used by any other part of
+    the circuit, making it irrelevant to the designer.
+\end{description}
+
+\subsection{How They Are Used}
+
+During minimisation, don't care entries may be treated as either 0 or 1 —
+whichever choice produces the simplest expression. This gives the designer
+freedom to form \textbf{larger groupings (implicants)}, which directly
+reduces the number of logic gates in the final circuit. A key rule applies:
+a grouping may \emph{include} don't cares to enlarge it, but it cannot
+consist \emph{entirely} of don't cares, as such a group covers no required
+output.
+
+\subsection{Truth Table Example}
+
+Consider the function \(f(A,B,C) = \sum m(1,3,7) + \sum d(2,5)\), shown
+in Table~\ref{tab:dontcare}. Minterms 2 and 5 are don't cares and can be
+included in groupings during minimisation to yield a simpler final
+expression.
+
+\begin{table}[h!]
+\centering
+\caption{Truth table with don't care conditions}
+\label{tab:dontcare}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+\textbf{Minterm} & \textbf{A} & \textbf{B} & \textbf{C} &
+\textbf{Output} \\
+\midrule
+0 & 0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 1 & 1 \\
+2 & 0 & 1 & 0 & \(d\) \\
+3 & 0 & 1 & 1 & 1 \\
+4 & 1 & 0 & 0 & 0 \\
+5 & 1 & 0 & 1 & \(d\) \\
+6 & 1 & 1 & 0 & 0 \\
+7 & 1 & 1 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
