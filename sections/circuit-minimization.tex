@@ -1,39 +1,45 @@
 \section{Circuit Minimization}
 
-\subsection{Karnaugh Maps (K-Maps)}
+\subsection{Why Minimization Matters}
 
-Karnaugh maps are used to minimize Boolean expressions, which helps in designing simpler digital circuits. Minimizing circuits is important because it reduces the number of logic gates required, leading to lower cost, less power consumption, and faster operation due to reduced delay. This makes the overall system more efficient and reliable.
+\subsection{Minimization Techniques}
 
-\subsubsection{Steps to Use K-Maps}
+\subsection{Complexity of Boolean Minimization}
 
-\textbf{Step 1: Choose the K-map} \\
-Select the correct K-map based on the number of variables (e.g., 2, 3, or 4 variables).
+%\subsection*{Karnaugh Maps (K-Maps)}
 
-\textbf{Step 2: Identify minterms or maxterms} \\
-Determine which combinations of inputs produce a 1 (minterms) or 0 (maxterms) from the given function.
+%Karnaugh maps are used to minimize Boolean expressions, which helps in designing simpler digital circuits. Minimizing circuits is important because it reduces the number of logic gates required, leading to lower cost, less power consumption, and faster operation due to reduced delay. This makes the overall system more efficient and reliable.
 
-\textbf{Step 3: Fill in the K-map} \\
-For SOP, place 1s in the cells corresponding to the minterms and 0s elsewhere.
+%\subsubsection*{Steps to Use K-Maps}
 
-\textbf{Step 4: Form groups} \\
-Group adjacent cells containing 1s. Each group must have a size that is a power of 2 (e.g., 2, 4, 8).
+%\textbf{Step 1: Choose the K-map} \\
+%Select the correct K-map based on the number of variables (e.g., 2, 3, or 4 variables).
 
-\textbf{Step 5: Follow grouping rules} \\
-Groups must be as large as possible, no diagonal grouping is allowed, overlapping is allowed, and wrapping around edges is permitted.
+%\textbf{Step 2: Identify minterms or maxterms} \\
+%Determine which combinations of inputs produce a 1 (minterms) or 0 (maxterms) from the given function.
 
-\textbf{Step 6: Derive simplified terms} \\
-For each group, identify the variables that remain constant and eliminate those that change.
+%\textbf{Step 3: Fill in the K-map} \\
+%For SOP, place 1s in the cells corresponding to the minterms and 0s elsewhere.
 
-\textbf{Step 7: Write the final expression} \\
-Combine all simplified terms to form the minimized Boolean expression.
+%\textbf{Step 4: Form groups} \\
+%Group adjacent cells containing 1s. Each group must have a size that is a power of 2 (e.g., 2, 4, 8).
 
-\subsubsection{Example}
+%\textbf{Step 5: Follow grouping rules} \\
+%Groups must be as large as possible, no diagonal grouping is allowed, overlapping is allowed, and wrapping around edges is permitted.
 
-Given $F(A, B) = \Sigma m(0,1)$, place 1s in the cells for $m_0$ and $m_1$. These two cells are adjacent, so they form a group of 2.
+%\textbf{Step 6: Derive simplified terms} \\
+%For each group, identify the variables that remain constant and eliminate those that change.
 
-$B$ changes, so it is eliminated, and $A$ remains constant at 0.
+%\textbf{Step 7: Write the final expression} \\
+%Combine all simplified terms to form the minimized Boolean expression.
 
-Final simplified expression:
-\[
-F = \overline{A}
-\]
+%\subsubsection*{Example}
+
+%Given $F(A, B) = \Sigma m(0,1)$, place 1s in the cells for $m_0$ and $m_1$. These two cells are adjacent, so they form a group of 2.
+
+%$B$ changes, so it is eliminated, and $A$ remains constant at 0.
+
+%Final simplified expression:
+%\[
+%F = \overline{A}
+%\]
