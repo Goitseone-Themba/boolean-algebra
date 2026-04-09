@@ -3,7 +3,7 @@
 \subsection{Definition}
 The Quine-McCluskey method is a tabular, algorithmic approach to Boolean
 function minimisation. It is essentially a more systematic and
-computer-friendly version of the Karnaugh map method. This method is a
+computer friendly version of the Karnaugh map method. This method is a
 deterministic algorithm that can be programmed and is effective for any
 number of variables.
 
@@ -14,36 +14,34 @@ The Quine-McCluskey method proceeds in two well-defined stages.
 \begin{description}
     \item[Step 1: Finding prime implicants.]
     This step identifies the largest possible groups of 1s and don't cares
-    that can be combined. It works by first listing all minterms (and don't
-    cares) in binary and sorting them into groups according to the number of
+    that can be combined. It works by first listing all minterms and don't
+    cares in binary and sorting them into groups according to the number of
     1-bits in their binary representation. Terms from adjacent groups are
-    then compared and merged if they differ in \textbf{exactly one bit
-    position}, using the algebraic identity:
+    then compared and merged if they differ in exactly one bit
+    position, using the algebraic identity:
     \[
         AB + AB' = A
     \]
     The differing bit is replaced with a dash ($-$) to indicate elimination.
     This process repeats on the resulting terms until no further merging is
-    possible. Any term that cannot be merged further is a
-    \textbf{prime implicant}.
+    possible. Any term that cannot be merged further is a prime implicant.
 
     \item[Step 2: Finding the essential prime implicants.]
     This step selects the minimal set of prime implicants needed to cover
-    all the original minterms (the 1s of the function). A
-    \textbf{prime implicant chart} is constructed with prime implicants as
+    all the original minterms, the 1s of the function. A
+    prime implicant chart is constructed with prime implicants as
     rows and original minterms as columns. A prime implicant is
-    \textbf{essential} if it is the only one covering a particular minterm
-    — it must be included in the final expression. After selecting all
+    essential if it is the only one covering a particular minterm, it must be included in the final expression. After selecting all
     essential prime implicants, any uncovered minterms are resolved by
     choosing additional prime implicants, preferring those that cover the
     most remaining minterms. This is a classic set-covering problem.
 \end{description}
 
-\subsubsection{Worked Example}
+\subsubsection{Example}
 
 Given: \(f(A,B,C,D) = \sum m(0,1,2,5,6,7,8,9,10,14)\)
 
-All minterms are listed in binary and sorted by their number of 1-bits,
+All minterms are listed in binary and sorted by their number of 1 bits,
 as shown in Table~\ref{tab:grouping}. Adjacent groups are then compared and
 combined where possible, producing the first-round combinations in
 Table~\ref{tab:combinations}.Combining continues on these results until no further merging is possible.

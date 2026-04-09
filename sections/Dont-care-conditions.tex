@@ -11,10 +11,10 @@ or $-$, these are commonly used in truth tables.
 Don't care conditions typically arise in two situations:
 
 \begin{description}
-    \item[Invalid input combinations.] In a BCD (Binary Coded Decimal)
-    system, only the input combinations \(0000\) to \(1001\) (representing
-    digits 0--9) are valid. The remaining six combinations (\(1010\) to
-    \(1111\)) can never occur, so their outputs are assigned as don't cares.
+    \item[Invalid input combinations.] In a Binary Coded Decimal
+    system, only the input combinations \(0000\) to \(1001\) representing
+    digits 0--9 are valid. The remaining six combinations \(1010\) to
+    \(1111\) can never occur, so their outputs are assigned as don't cares.
 
     \item[Unused outputs.] In some systems a particular input state is
     reachable, but the resulting output is never used by any other part of
@@ -23,12 +23,12 @@ Don't care conditions typically arise in two situations:
 
 \subsection{How They Are Used}
 
-During minimisation, don't care entries may be treated as either 0 or 1 —
+During minimisation, don't care entries may be treated as either 0 or 1 
 whichever choice produces the simplest expression. This gives the designer
-freedom to form \textbf{larger groupings (implicants)}, which directly
-reduces the number of logic gates in the final circuit. A key rule applies:
-a grouping may \emph{include} don't cares to enlarge it, but it cannot
-consist \emph{entirely} of don't cares, as such a group covers no required
+freedom to form larger groupings, implicants  which directly
+reduces the number of logic gates in the final circuit. A key rule applies,
+a grouping may include don't cares to enlarge it, but it cannot
+consist entirely of don't cares, as such a group covers no required
 output.
 
 \subsection{Truth Table Example}
