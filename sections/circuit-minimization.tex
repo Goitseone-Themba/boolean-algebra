@@ -2,93 +2,267 @@
 
 \subsection{Intro}
 This is the process of representing a Boolean function with the fewest possible
-products of  literals, where these products contain the fewest literals. This 
-makes it possible for the construction of  a circuit that uses the minimum 
-number of and inputs to occur which in earl age 1960’s computing was necessary 
-to reduce costs and run more efficiently.\\
-\\
-Sum-of-Products(differing by only one variable)
+products of literals, where these products contain the fewest literals. This 
+makes it possible for the construction of a circuit that uses the minimum 
+number of inputs and gates to occur which in the early 1960s computing was 
+necessary to reduce costs and run more efficiently.
 
-    1. xyz + xy’z = (y+y’)xz =xz
+\bigskip
+\noindent\textbf{Sum-of-Products (differing by only one variable)}
 
-    2. wxyz’ +wxyz = (z’+z)wxy =wxy\\
-\\
-The above examples can be represented by circuits in many ways but by minimization of circuits we will represent them by the smallest number of gates and inputs as shown later.
+\begin{itemize}
+    \item $xyz + xy'z = (y+y')xz = xz$
+    \item $wxyz' + wxyz = (z'+z)wxy = wxy$
+\end{itemize}
+
+\bigskip
+\noindent The above examples can be represented by circuits in many ways but by 
+minimization of circuits we will represent them by the smallest number of 
+gates and inputs as shown later.
 
 \subsection{Complexity of Boolean Minimization}
 Minimizing Boolean functions with many variables is a computationally intensive
-task as it has been shown to be a NP-complete problem( meaning existence of a 
-        fast(polynomial time) algorithm is unlikely) and of current algorithms can only
+task as it has been shown to be a NP-complete problem (meaning existence of a 
+fast (polynomial time) algorithm is unlikely) and of current algorithms can only
 minimize up to 25 variables.
 
 \subsection{Why Minimization Matters}
+Circuit minimization is crucial in digital logic design because it:
+\begin{itemize}
+    \item Reduces the number of logic gates required
+    \item Leads to lower cost of implementation
+    \item Results in less power consumption
+    \item Produces faster operation due to reduced delay
+    \item Makes the overall system more efficient and reliable
+\end{itemize}
 
 \subsection{Minimization Techniques}
 
-1. Karnaugh maps(K-Maps).
-\\
-2. Quine McCluckey Method.
+\begin{enumerate}
+    \item Karnaugh Maps (K-Maps)
+    \item Quine-McCluskey Method
+\end{enumerate}
 
-\subsection{Karnaugh maps(K-Maps)}
-This is a visual methos of simplifying sum-of-products expansions for Boolean 
-functions with a smaller number of variables(<=6) by combining terms. To 
-minimize we identify block’s of 1’s in the map and use the corresponding 
+\section{Karnaugh Maps (K-Maps)}
+
+This is a visual method of simplifying sum-of-products expansions for Boolean 
+functions with a smaller number of variables ($\leq 6$) by combining terms. To 
+minimize, we identify blocks of 1's in the map and use the corresponding 
 variables.
 
-Key notes:
+\subsection{Key Notes}
 
-    • A block must contain 2k cells (usually: 1,2,4,8,16).
+\begin{itemize}
+    \item A block must contain $2^k$ cells (usually: 1, 2, 4, 8, 16).
+    \item Identify the largest possible blocks and cover all the 1's with the 
+    least number of blocks.
+    \item \textbf{Implicant:} A product of literals corresponding to a block of 
+    all 1's.
+    \item \textbf{Prime Implicant:} A block of 1's that is not contained in any 
+    larger block of all 1's.
+    \item \textbf{Essential Prime Implicant:} A prime implicant that covers at 
+    least one cell containing a 1 that is not covered by any other prime 
+    implicant and it must be included in the final expression.
+    \item \textbf{Literal elimination:} A block of $2^k$ cells in an $n$-variable 
+    map results in $n-k$ literals.
+\end{itemize}
 
-    • Identify the largest possible blocks and cover all the 1’s with the least
-    number of block’s.
+\subsection{Steps to Use K-Maps}
 
-    • Implicant: is a product of literals corresponding to a block of all 1’s.
+\begin{enumerate}
+    \item \textbf{Choose the K-map:} Select the correct K-map based on the 
+    number of variables (e.g., 2, 3, or 4 variables).
+    
+    \item \textbf{Identify minterms or maxterms:} Determine which combinations of 
+    inputs produce a 1 (minterms) or 0 (maxterms) from the given function.
+    
+    \item \textbf{Fill in the K-map:} For SOP, place 1s in the cells 
+    corresponding to the minterms and 0s elsewhere.
+    
+    \item \textbf{Form groups:} Group adjacent cells containing 1s. Each group 
+    must have a size that is a power of 2 (e.g., 2, 4, 8).
+    
+    \item \textbf{Follow grouping rules:} Groups must be as large as possible, 
+    no diagonal grouping is allowed, overlapping is allowed, and wrapping around 
+    edges is permitted.
+    
+    \item \textbf{Derive simplified terms:} For each group, identify the 
+    variables that remain constant and eliminate those that change.
+    
+    \item \textbf{Write the final expression:} Combine all simplified terms to 
+    form the minimized Boolean expression.
+\end{enumerate}
 
-    • Prime implicant: is a block of 1’s that is not contained in any larger 
-    block of all 1’s.
+\subsection{2-Variable K-map}
 
-    • Essential Prime Implicant: is a prime implicant that covers at least one 
-    cell containing a 1 that is not covered by any other prime implicant  and 
-    it must be included in final expression.
+Given $F(x,y) = xy + x'y$, we can simplify:
 
-    • Literal elimination: block of 2k cells in n-variable  map results in n-k 
-    literals.
+\begin{align*}
+    xy + x'y &= (y + y')x \\
+             &= x
+\end{align*}
 
-%\subsection*{Karnaugh Maps (K-Maps)}
+\begin{center}
+\begin{tabular}{c|cc|c}
+    \textbf{yy'} & \textbf{x} & \textbf{x'} & \\
+    \hline
+    \textbf{x}     & 1 & 1 & $x$ \\
+    \textbf{x'}    & 0 & 1 & $x'$ \\
+    \hline
+               & $y$ & $y'$ & 
+\end{tabular}
+\qquad
+\begin{tabular}{c|cc|c}
+    \textbf{yy'} & \textbf{x} & \textbf{x'} & \\
+    \hline
+    \textbf{x}     & 1 & 0 & $xy$ \\
+    \textbf{x'}    & 1 & 1 & $x'y + x'y'$ \\
+    \hline
+               & $y$ & $y'$ & 
+\end{tabular}
+\end{center}
 
-%Karnaugh maps are used to minimize Boolean expressions, which helps in designing simpler digital circuits. Minimizing circuits is important because it reduces the number of logic gates required, leading to lower cost, less power consumption, and faster operation due to reduced delay. This makes the overall system more efficient and reliable.
+\bigskip
+\noindent Given $F(x,y) = xy' + x'y$:
 
-%\subsubsection*{Steps to Use K-Maps}
+\begin{align*}
+    xy' + x'y + x'y' &= x'(y + y') + xy' \\
+                    &= x' + xy'
+\end{align*}
 
-%\textbf{Step 1: Choose the K-map} \\
-%Select the correct K-map based on the number of variables (e.g., 2, 3, or 4 variables).
+\begin{center}
+\begin{tabular}{c|cc|c}
+    \textbf{yy'} & \textbf{x} & \textbf{x'} & \\
+    \hline
+    \textbf{x}     & 0 & 1 & $x'$ \\
+    \textbf{x'}    & 1 & 1 & $x' + y'$ \\
+    \hline
+               & $y$ & $y'$ & 
+\end{tabular}
+\qquad
+\begin{tabular}{c|cc|c}
+    \textbf{yy'} & \textbf{x} & \textbf{x'} & \\
+    \hline
+    \textbf{x}     & 1 & 0 & $xy'$ \\
+    \textbf{x'}    & 1 & 1 & $x'y + x'y'$ \\
+    \hline
+               & $y$ & $y'$ & 
+\end{tabular}
+\end{center}
 
-%\textbf{Step 2: Identify minterms or maxterms} \\
-%Determine which combinations of inputs produce a 1 (minterms) or 0 (maxterms) from the given function.
+\subsection{3-Variable K-map}
 
-%\textbf{Step 3: Fill in the K-map} \\
-%For SOP, place 1s in the cells corresponding to the minterms and 0s elsewhere.
+\bigskip
+\noindent\textbf{Example 1:} Simplify $F(x,y,z) = xyz' + xy'z' + x'yz + x'y'z'$
 
-%\textbf{Step 4: Form groups} \\
-%Group adjacent cells containing 1s. Each group must have a size that is a power of 2 (e.g., 2, 4, 8).
+\begin{align*}
+    &= xz'(y + y') + x'z(y + y') \\
+    &= xz' + x'z
+\end{align*}
 
-%\textbf{Step 5: Follow grouping rules} \\
-%Groups must be as large as possible, no diagonal grouping is allowed, overlapping is allowed, and wrapping around edges is permitted.
+\begin{center}
+\begin{tabular}{c|cccc|c}
+    \textbf{yz} & \textbf{00} & \textbf{01} & \textbf{11} & \textbf{10} & \\
+    \hline
+    \textbf{0} & 1          & 0          & 1          & 0          & $x'$ \\
+    \textbf{1} & 1          & 0          & 1          & 1          & $xz' + x'z$ \\
+    \hline
+               & $z'$       & $z$        &            &            & 
+\end{tabular}
+\end{center}
 
-%\textbf{Step 6: Derive simplified terms} \\
-%For each group, identify the variables that remain constant and eliminate those that change.
+\bigskip
+\noindent\textbf{Example 2:} Simplify $F(x,y,z) = xy'z + xy'z' + x'yz + x'y'z + x'y'z'$
 
-%\textbf{Step 7: Write the final expression} \\
-%Combine all simplified terms to form the minimized Boolean expression.
+\begin{align*}
+    &= y'(xz + xz') + x'(yz + y'z) \\
+    &= y'x(z + z') + x'(y + y')z \\
+    &= y' + x'z
+\end{align*}
 
-%\subsubsection*{Example}
+\begin{center}
+\begin{tabular}{c|cccc|c}
+    \textbf{yz} & \textbf{00} & \textbf{01} & \textbf{11} & \textbf{10} & \\
+    \hline
+    \textbf{0} & 1          & 1          & 1          & 0          & $y' + x'z$ \\
+    \textbf{1} & 0          & 1          & 1          & 1          & $y'$ \\
+    \hline
+               & $z'$       & $z$        &            &            & 
+\end{tabular}
+\end{center}
 
-%Given $F(A, B) = \Sigma m(0,1)$, place 1s in the cells for $m_0$ and $m_1$. These two cells are adjacent, so they form a group of 2.
+\bigskip
+\noindent\textbf{Example 3:} Simplify $F(x,y,z) = xyz + xyz' + xy'z + xy'z' + x'yz + x'y'z + x'y'z'$
 
-%$B$ changes, so it is eliminated, and $A$ remains constant at 0.
+\begin{align*}
+    &= xy(z + z') + xy'(z + z') + x'y(z + z') + x'y'z \\
+    &= xy + xy' + x'y + x'y'z \\
+    &= x(y + y') + x'(y + y'z) \\
+    &= x + x'y \\
+    &= x + y
+\end{align*}
 
-%Final simplified expression:
-%\[
-%F = \overline{A}
-%\]
+\begin{center}
+\begin{tabular}{c|cccc|c}
+    \textbf{yz} & \textbf{00} & \textbf{01} & \textbf{11} & \textbf{10} & \\
+    \hline
+    \textbf{0} & 1          & 1          & 1          & 1          & $x + y$ \\
+    \textbf{1} & 0          & 1          & 1          & 1          & $x + y$ \\
+    \hline
+               & $z'$       & $z$        &            &            & 
+\end{tabular}
+\end{center}
 
+\bigskip
+\noindent\textbf{Example 4:} Simplify $F(x,y,z) = xyz' + xy'z' + x'y'z + x'y'z'$
+
+\begin{align*}
+    &= xz'(y + y') + x'y'(z + z') \\
+    &= xz' + x'y'
+\end{align*}
+
+\begin{center}
+\begin{tabular}{c|cccc|c}
+    \textbf{yz} & \textbf{00} & \textbf{01} & \textbf{11} & \textbf{10} & \\
+    \hline
+    \textbf{0} & 1          & 0          & 0          & 1          & $x'z' + xy'$ \\
+    \textbf{1} & 0          & 0          & 1          & 1          & $xz'$ \\
+    \hline
+               & $z'$       & $z$        &            &            & 
+\end{tabular}
+\end{center}
+
+\subsection{4-Variable K-map}
+
+\bigskip
+\begin{center}
+\begin{tabular}{c|ccccccc|c}
+    \textbf{yz} & \textbf{00} & \textbf{01} & \textbf{11} & \textbf{10} & & & \\
+    \hline
+    \textbf{wx = 00}    & $w'x'y'z'$ & $w'x'y'z$ & $w'x'yz$ & $w'x'yz'$ & & & $w'x'$ \\
+    \textbf{wx = 01}    & $w'xy'z'$ & $w'xy'z$ & $w'xyz$ & $w'xyz'$ & & & $w'x$ \\
+    \textbf{wx = 11}    & $wxy'z'$ & $wxy'z$ & $wxyz$ & $wxyz'$ & & & $wx$ \\
+    \textbf{wx = 10}    & $wx'y'z'$ & $wx'y'z$ & $wx'yz$ & $wx'yz'$ & & & $wx'$ \\
+    \hline
+                       & $y'z'$    & $y'z$     & $yz$     & $yz'$     & & &
+\end{tabular}
+\end{center}
+
+\subsection{K-map Notes}
+
+\begin{itemize}
+    \item For $n$ variables, there are $2^n$ possible minterms in the map.
+    \item We can use gray codes for plotting variables into the map to make sure 
+    only one literal changes between two adjacent columns.
+    \item We eliminate the variable that changes:
+    \begin{itemize}
+        \item A block of 2 results in 1 variable eliminated.
+        \item A block of 4 results in 2 variables eliminated.
+        \item A block of 8 leads to 3 variables eliminated, giving constant 1.
+    \end{itemize}
+    \item If a minterm is present in a function, the cell gets a 1; if not, it 
+    gets 0.
+    \item Remember: adjacency plays a big role in the mapping and selection of 
+    cells, whether it's physical (horizontal/vertical) adjacency or logical 
+    (wrap around) adjacency.
+\end{itemize}
