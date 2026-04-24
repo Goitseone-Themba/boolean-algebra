@@ -9,8 +9,6 @@ A logic gate is a device that performs a Boolean function. Each input and output
 
 \subsection{Types of Gates}
 
-  A logic gate performs a Boolean operation. They do not have memory; these types of circuits are known as combinatorial circuits or gating networks.
-
 \subsection*{Inverter}
 
 The inverter gate, also called a NOT gate, takes the value of a single Boolean variable as input and produces it’s complement as output. The inverter symbol shows the input on the left and the output on the right.
@@ -41,7 +39,7 @@ The inverter gate, also called a NOT gate, takes the value of a single Boolean v
 
 \subsection*{OR gate}
 
-The OR gate that is true(1) when one or both inputs are true(1). If all OR gates are false, the output is false(0). The output is the Boolean sum of their values. The inputs are on the left and outputs on the right.
+The OR gate that is true(1) when one or both inputs are true(1). If all OR gates are false, the output is false(0). The output is the Boolean sum of their values. The inputs are on the left and the outputs on the right.
 
 \begin{figure}[H]
     \centering
@@ -101,7 +99,7 @@ Boolean Expression: $A$ = $a \cdot b$
 
 \subsection*{NAND gate}
 
-The NAND gate also known as negated AND, gives an output is false(0) if both inputs are true(1). The inputs are shown on the left,and the output is shown on the right.
+The NAND gate, also known as negated AND, gives an output is false(0) if both inputs are true(1). The inputs are shown on the left,and the output is shown on the right.
 
 \begin{figure}[H]
     \centering
@@ -186,12 +184,26 @@ An XOR also known as Exclusive OR gate is a digital logic gate that outputs true
 \end{table}
 
 \begin{center}
-Boolean Expression:$A = x \oplus y$
+Boolean expression: $A = x \oplus y$
 \end{center}
 
 \subsection{Combinations of Gates}
 
-Combinational circuits can be built using inverters, OR gates and, the AND gates at the same time, where some gates may share inputs; this can be shown by using branching line or written separately for each gate.For example;
+Combinational circuits can be built using inverters, OR gates and, the AND gates at the same time, where some gates may share inputs; this can be shown by using branching line or written separately for each gate.
+
+steps on how to make a combinational cirucUit;
+
+\textbf {1.} Identify the inputs and outputs of the circuit.
+
+\textbf{2.} Draw a truth table with all possible input values that should match the output values.
+
+\textbf{3.} Derive the Boolean expression for the circuit.
+
+\textbf{4.} Simplify the Boolean expression using K-Map or algebraic methods
+
+\textbf{5.} Draw  the logic diagram using the Boolean expression
+
+For example;
 
 \begin{figure}[H]
     \centering
