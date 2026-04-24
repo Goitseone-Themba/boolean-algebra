@@ -3,11 +3,11 @@
 \subsection{Definition}
 The Quine-McCluskey method is a tabular, algorithmic approach to Boolean
 function minimisation. It is essentially a more systematic and
-computer friendly version of the Karnaugh map method. This method is a
+computer friendly version of the Karnaugh map method. The method is a
 deterministic algorithm that can be programmed and is effective for any
-number of variables.
+number of variables \cite{rosen2013}.
 
-\subsubsection{How It Works}
+\subsection{How It Works}
 
 The Quine-McCluskey method proceeds in two well-defined stages.
 
@@ -15,7 +15,7 @@ The Quine-McCluskey method proceeds in two well-defined stages.
     \item[Step 1: Finding prime implicants.]
     This step identifies the largest possible groups of 1s and don't cares
     that can be combined. It works by first listing all minterms and don't
-    cares in binary and sorting them into groups according to the number of
+    cares in binary and sorting them into groups according to the number ofS
     1-bits in their binary representation. Terms from adjacent groups are
     then compared and merged if they differ in exactly one bit
     position, using the algebraic identity:
@@ -37,7 +37,7 @@ The Quine-McCluskey method proceeds in two well-defined stages.
     most remaining minterms. This is a classic set-covering problem.
 \end{description}
 
-\subsubsection{Example}
+\subsection{Example}
 
 Given: \(f(A,B,C,D) = \sum m(0,1,2,5,6,7,8,9,10,14)\)
 
@@ -49,7 +49,7 @@ Terms that remain uncombined are the prime implicants. These are entered
 into the prime implicant chart, essential prime implicants are identified,
 and the minimised Sum of Products expression is written.
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \caption{Minterms grouped by number of 1-bits}
 \label{tab:grouping}
@@ -74,7 +74,7 @@ and the minimised Sum of Products expression is written.
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \caption{First-round combinations}
 \label{tab:combinations}
