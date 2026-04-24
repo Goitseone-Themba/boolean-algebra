@@ -11,16 +11,17 @@
 \usepackage{hyperref}
 \usepackage{xcolor} 
 \usepackage{enumitem}
-\usepackage{sectsty}
+\usepackage{titlesec}
 \usepackage{setspace}
 \usepackage{booktabs}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{cite}
 \onehalfspacing
 
-\sectionfont{\large\bfseries}
-\subsectionfont{\normalsize\bfseries}
-\subsubsectionfont{\normalsize\itshape}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{1em}{}
 
 \hypersetup{
     colorlinks=true,
@@ -72,7 +73,7 @@
 
     \vspace{1cm}
 
-    \textbf{March 2026}
+    \textbf{April 2026}
 
 \end{titlepage}
 
@@ -80,11 +81,6 @@
 \noindent 
 This report presents the fundamentals of Boolean algebra and its application in digital logic design. It focuses on the simplification of Boolean expressions to design efficient circuits with reduced complexity. Karnaugh maps (K-maps) are introduced as a practical method for minimizing Boolean functions by visually grouping terms. The report outlines the basic steps involved in using K-maps and demonstrates how they can be applied to obtain simplified expressions. Overall, the aim is to show how Boolean algebra and K-maps contribute to the design of cost-effective and efficient digital systems.
 \end{abstract}
-
-\newpage
-\section*{Acknowledgements}
-\noindent
-Special thanks, credits where necessary...
 
 \newpage
 \tableofcontents
@@ -116,21 +112,7 @@ Special thanks, credits where necessary...
 \include{sections/Quine-McCluckey-Method}
 
 \newpage
-\section{References}
-
-\begin{enumerate}
-\item STEM Success Center, \textit{Guide to the K-Map (Karnaugh Map)}, CS 231 Handout.
-\item Floyd, T. L. (2015). Digital fundamentals (11th ed.). Pearson.
-\item Rosen, K. H., and Krithivasan, K. (2013). Discrete mathematics and its applications (7th ed., Global ed.). McGraw-Hill.
-\item Boole, G. (1854). An Investigation of the Laws of Thought. Walton and Maberly.
-\item Rosen, K. H. (2012). Discrete Mathematics and Its Applications (7th ed.). McGraw-Hill Education.
-\item Shannon, C. E. (1938). A Symbolic Analysis of Relay and Switching Circuits. MIT.
-\end{enumerate}
-
-\newpage
-\section{Appendix A: Some Image or document }
-
-\newpage
-\section*{Appendix C: Detailed....}
+\bibliographystyle{ieeetr}
+\bibliography{references}
 
 \end{document}

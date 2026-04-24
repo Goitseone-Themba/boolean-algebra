@@ -1,25 +1,25 @@
 \section{Circuit Minimization}
 
 \subsection{Intro}
-This is the process of representing a Boolean function with the fewest possible
+\begin{sloppypar}This is the process of representing a Boolean function with the fewest possible
 products of  literals, where these products contain the fewest literals. This 
 makes it possible for the construction of  a circuit that uses the minimum 
 number of and inputs to occur which in earl age 1960’s computing was necessary 
-to reduce costs and run more efficiently.\\
-\\
+to reduce costs and run more efficiently.
+\end{sloppypar}
 Sum-of-Products(differing by only one variable)
 
     1. xyz + xy’z = (y+y’)xz =xz
 
-    2. wxyz’ +wxyz = (z’+z)wxy =wxy\\
-\\
+    2. wxyz’ +wxyz = (z’+z)wxy =wxy
+
 The above examples can be represented by circuits in many ways but by minimization of circuits we will represent them by the smallest number of gates and inputs as shown later.
 
 \subsection{Complexity of Boolean Minimization}
 Minimizing Boolean functions with many variables is a computationally intensive
 task as it has been shown to be a NP-complete problem( meaning existence of a 
         fast(polynomial time) algorithm is unlikely) and of current algorithms can only
-minimize up to 25 variables.
+minimize up to 25 variables \cite{shannon1938}.
 
 \subsection{Why Minimization Matters}
 
@@ -33,7 +33,7 @@ minimize up to 25 variables.
 This is a visual methos of simplifying sum-of-products expansions for Boolean 
 functions with a smaller number of variables(<=6) by combining terms. To 
 minimize we identify block’s of 1’s in the map and use the corresponding 
-variables.
+variables \cite{stem2024}.
 
 Key notes:
 
