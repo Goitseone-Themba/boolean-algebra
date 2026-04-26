@@ -1,8 +1,4 @@
-# Boolean Algebra Report
-
-A university report on Boolean algebra and its applications in digital logic design.
-
-## Overview
+# Overview
 
 This report covers the fundamentals of Boolean algebra and its application in digital logic design, focusing on the simplification of Boolean expressions to design efficient circuits with reduced complexity.
 
