@@ -1,26 +1,17 @@
+\section* {Examples Of Circuits}
 
-\section{EXAMPLES OF CIRCUITS}
 
+A digital logic circuit is a set of logic gates that takes in signals (usually 0s and 1s) and uses a set rule or function to make an output. In short, circuits are made to do useful things. They take inputs like x, y, and z and give an output. You can use a Boolean expression to describe how a circuit works.
 
-\subsection{DEFINITION}
-
-A Circuit ( in a digital logic ) is a system made up of logic gates that processes input signals ( usually represented as 0s and 1s ) to produce an output based on a defined rule or function \cite{boole1854}.
-\\
-Basically, circuits are designed to perform useful functions.. They take inputs (e.g x,y, and z) and produce an output using Boolean logic. The behavior of a circuit can be described using a Boolean expression.
-
-\subsection{Examples}
-
-The following are some examples of circuits and their solutions.
-
+This section has some circuits and shows you how to solve them.
 
 \subsection{EXAMPLE 1}
  A committee of three individuals decides on issues for an organization. Each individual vote yes or no for each proposal that arises. A proposal is passed if it receives at least two yes votes. Design a circuit that determines whether a proposal passes.
 
 \textbf{Solution:}
-Let $x=1$ if the first individual votes yes and $x=0$ if this individual votes no; let $y=1$ if the second individual votes yes and $y=0$ if this individual votes no; let $z=1$ if the third individual votes yes and $z=0$ if this individual votes no. Then a circuit must be designed that produces the output 1 when two or more of $x,y,z$ are 1. One Boolean expression for this is
-\[
-xy+xz+yz.
-\]
+Let $x=1$ if the first individual votes yes and $x=0$ if this individual votes no; let $y=1$ if the second individual votes yes and $y=0$ if this individual votes no; let $z=1$ if the third individual votes yes and $z=0$ if this individual votes no. Then a circuit must be designed that produces the output 1 when two or more of $x,y,z$ are 1. One Boolean expression 
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/WhatsApp Image 2026-04-13 at 20.37.12.jpeg}
@@ -30,10 +21,10 @@ xy+xz+yz.
 
 \subsection{EXAMPLE 2}
 
-Sometimes light fixtures are controlled by more than one switch. Circuits need to be designed so that flipping any one of the switches for the fixture turns the light on when it is off and turns the light off when it is on. Design circuits that accomplish this when there are two switches and when there are three switches.
+More than one switch can sometimes control a light fixture. while the light is off, flipping any of the switches for the fixture should turn it on, and while the light is on, flicking any of the switches should turn it off. Design circuits that do this with two switches and then with three switches.
 
-   \textbf{Solution:}
- We begin by designing the circuit that controls the light fixture when two different switches are used. Let $x=1$ when the first switch is closed and $x=0$ when it is open and let $y=1$ when the second switch is closed and $y=0$ when it is open. Let $F(x,y)=1$ when the light is on and $F(x,y)=0$ when it is off. We can arbitrarily decide that the light will be on when both switches are closed, so that $F(1,1)=1$. This determines the remaining values:
+   Solution: We begin by creating the circuit that turns the light on and off when two different switches are used. Set $x=1$ when the first switch is closed and $x=0$ when it is open. Set $y=1$ when the second switch is closed and $y=0$ when it is open. When the light is on, $F(x,y)=1$; when it is off, $F(x,y)=0$. 
+We can choose at random that the light will be on when both switches are closed, which means that $F(1,1)=1$. This finds the other values:
 
 
 

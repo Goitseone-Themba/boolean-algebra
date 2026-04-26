@@ -266,3 +266,23 @@ Given $F(x,y) = xy + x'y$, we can simplify:
     cells, whether it's physical (horizontal/vertical) adjacency or logical 
     (wrap around) adjacency.
 \end{itemize}
+
+\subsection{Applications of K-Maps}
+
+While primarily known for Boolean simplification, K-Maps are utilized across various specialized fields to optimize logical processes\cite{angadi2025review}:
+
+\begin{itemize}
+    \item \textbf{Digital Circuit Design:} The most fundamental application involves minimizing logic gates for combinational circuits like adders and multiplexers. As shown in Figure \ref{fig:kmap_logic}, K-Maps allow designers to transform complex truth tables into the most efficient gate-level implementations.
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/simplify-logic-using-karnaugh-map.png}
+        \caption{Process of simplifying digital logic using a Karnaugh Map to produce a minimized circuit.}
+        \label{fig:kmap_logic}
+    \end{figure}
+    \bigskip
+    \bigskip
+    \item \textbf{Error Detection and Correction:} K-Maps assist in designing the logic for parity checkers, Cyclic Redundancy Check (CRC) logic, and error-correcting schemes such as Hamming codes.
+    \item \textbf{Fault-Tolerant System Design:} In high-reliability environments like aerospace and automotive safety systems, K-Maps are used to design redundant, fault-tolerant circuits that can isolate system failures.
+    \item \textbf{Medical Data Analysis:} Beyond engineering, K-Maps serve as a visualization tool for identifying patterns in clinical data, such as mapping patient symptoms to specific diagnoses in epidemiology.
+\end{itemize}
